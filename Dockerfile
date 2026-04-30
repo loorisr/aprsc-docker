@@ -30,6 +30,6 @@ EXPOSE 14580
 # Run as the aprsc user for security
 USER aprsc
 
-# Start in foreground (-f) and log to stderr (-e info) so Docker can capture logs
+# Log to stderr (-e info) so Docker can capture logs
 ENTRYPOINT ["/opt/aprsc/sbin/aprsc"]
-CMD ["-f", "-e", "info", "-c", "/opt/aprsc/etc/aprsc.conf"]
+CMD ["-e", "info", "-c", "/opt/aprsc/etc/aprsc.conf", "-p", "/opt/aprsc/logs/aprsc.pid"]

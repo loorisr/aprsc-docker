@@ -1,0 +1,17 @@
+services:
+  aprsc:
+    image: ghcr.io/loorisr/aprsc-docker:latest
+    container_name: aprsc
+    volumes:
+      - ./aprsc/aprsc.conf:/opt/aprsc/etc/aprsc.conf
+      - ./aprsc/data:/opt/aprsc/data
+    ports:
+      #- 8080:8080 # UDP submit
+      #- 10152:10152 # Full feed
+      #- 14501:14501 # Status page HTTP 
+      - 14580:14580 # Client-Defined Filters
+    restart: unless-stopped
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
